@@ -39,10 +39,10 @@
                         <td>${filme.ano}</td>
                         <td>
                             
-                            <a href="./editar?filme =${filme.id_filmes} ">
+                            <a href="./editar?filme=${filme.id_filmes} ">
                             <button type="button" class="btn btn-warning">Editar</button>
                             </a>
-                       <a href="./excluir?filme =${filme.id_filmes} ">
+                       <a href="./excluir?filme=${filme.id_filmes} ">
                                 <button type="button" class="btn btn-danger">Excluir</button>
                             </a>
                         </td>    
