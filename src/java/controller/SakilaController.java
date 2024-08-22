@@ -67,13 +67,15 @@ public class SakilaController extends HttpServlet {
             
            else if(paginaAtual.equals("/editar")){
             int id = Integer.parseInt(request.getParameter("filme"));
+            
             Filmes filmeAtual = fdao.selecionarFilme(id);
+            request.setAttribute("filme", id);
             request.setAttribute("titulo", filmeAtual.getTitulo());
             request.setAttribute("descricao", filmeAtual.getDescricao());
             request.setAttribute("ano", filmeAtual.getAno());
             request.getRequestDispatcher("/WEB-INF/jsp/editar.jsp").forward(request, response);
-            }
-    
+           }
+     
     else if(paginaAtual.equals("/excluir")){
     int id = Integer.parseInt(request.getParameter("filme"));
     fdao.excluir(id);
@@ -108,8 +110,20 @@ public class SakilaController extends HttpServlet {
             
             response.sendRedirect("sakila");
             }
+           if(paginaAtual.equals("/editar")){
+           int id = Integer.parseInt(request.getParameter("filme"));
+           Filmes filmeAtu = new Filmes();
+            
+            filmeAtu.setTitulo(request.getParameter("titulo"));
+            filmeAtu.setDescricao(request.getParameter("desc"));
+            filmeAtu.setAno(Integer.parseInt(request.getParameter("ano")));
+           
+            FilmesDAO filmesEdit = new FilmesDAO();
+            filmesEdit.atualizar(filmeAtu, id);
+            response.sendRedirect("sakila");
+          
+           }  
     }
-
     /**
      * Returns a short description of the servlet.
      *

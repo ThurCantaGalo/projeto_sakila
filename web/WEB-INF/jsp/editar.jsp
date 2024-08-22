@@ -12,9 +12,10 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     
         <title>Editar Filme</title>
+        
     </head>
     <body>
-        <form method="post" action="./editar" class="container">
+        <form method="post" action="./editar?filme=${filme}" class="container">
             <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default">Titulo</span>
   <input type="text" value="${titulo}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="titulo">
