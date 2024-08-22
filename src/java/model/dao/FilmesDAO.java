@@ -96,7 +96,7 @@ e.printStackTrace();
      if(rs.next()){
      filmeSelecionado.setTitulo(rs.getString("title"));
      filmeSelecionado.setDescricao(rs.getString("description"));
-     filmeSelecionado.setTitulo(rs.getString("release_year"));
+     filmeSelecionado.setAno(rs.getInt("release_year"));
      
      }
      
@@ -131,5 +131,29 @@ try{
 e.printStackTrace();
 }
 }
-    
+  
+  public void atualizar (Filmes filme, int id){
+    try{
+        Connection conexao = Conexao.conectar();
+          PreparedStatement stmt = null;
+         
+          stmt = conexao.prepareStatement(
+                  "update film set title = ?, description = ?, release_year = ? where film_id = ?"
+          );
+          stmt.setString(1, filme.getTitulo());
+          stmt.setString(2, filme.getDescricao());
+          stmt.setInt(3, filme.getAno());
+          stmt.setInt(4, id);
+          
+          
+          stmt.executeUpdate();
+          stmt.close();
+          conexao.close();
+          
+      }catch (SQLException e) {
+       e.printStackTrace();
+  
+      }
+      }
 }
+  
